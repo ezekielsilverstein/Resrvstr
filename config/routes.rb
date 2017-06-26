@@ -33,4 +33,5 @@ Rails.application.routes.draw do
   post 'example', to: "example#example_post"
   # curl -X POST localhost:3000/example
 
+
 end
