@@ -1,37 +1,54 @@
 Rails.application.routes.draw do
 
+  # MODEL EXAMPLES
 
-  # HTTP VERB EXAMPLES
+  # Model with no database connection
   #
-  # The word "Record" usually means an item in the database
+  # Things to look at here:
+  # - ModelExamplesController#example1
+  # - models/plain_object_example.rb
   #
-  # GET => Used to get information
-  # POST => Used to create new records
-  # PUT => Used to update existing records
-  # DELETE => Used to delete records
+  # Get a PlainObjectExample
+  get 'model_examples/example1', to: 'model_examples#example1'
 
-  # All of these examples do the same thing, but
-  # using different HTTP verbs
+  # EXERCISE: Use a query param to set the name
+  #
+  get 'model_examples/example2', to: 'model_examples#example2'
 
-  # Only GET works from a browser URL
-  get 'example1', to: "example#example1"
-  # curl localhost:3000/example1
 
-  put 'example1', to: "example#example1"
-  # curl - X PUT localhost:3000/example1
+  # Model with database connection
+  #
+  # Things to look at here:
+  # - ModelExamplesController#example3
+  # - models/example.rb
+  # - db/migrate/20170626131959_add_example_model.rb
+  # - db/schema.rb
+  #
+  # Example 3: Creates a new record if "given_name" param is present
+  get 'model_examples/example3', to: 'model_examples#example3'
 
-  post 'example1', to: "example#example1"
-  # curl - X POST localhost:3000/example1
+  # Example 4: Show all names saved
+  get 'model_examples/example4', to: 'model_examples#example4'
 
-  delete 'example1', to: "example#example1"
-  # curl - X DELETE localhost:3000/example1
 
-  # These examples use different HTTP verbs to route to different methods
-  put 'example', to: "example#example_put"
-  # curl -X PUT localhost:3000/example
+  # EXERCISE:
 
-  post 'example', to: "example#example_post"
-  # curl -X POST localhost:3000/example
-
+  # Add the migration:
+  # 1) Generate a migration: "$ rails g migration add_restaurants"
+  # 2) Create a new table for restaurants:
+  #    Columns: name, address
+  # 3) Check with teacher that syntax is correct
+  # 4) Run the migration: "$ rake db:migrate"
+  # 5) Check the "db/schema.rb" to see that it was created
+  #
+  # Add the model:
+  # 1) Add a new file: models/restaurant.rb
+  # 2) Add the class definition, inherit from ActiveRecord::Base
+  # 3) Open rails console, create 2 restaurants
+  #
+  # Add the controller:
+  # 1) Add a controller (RestaurantsController, controllers/restaurants_controller.rb)
+  # 2) Add an action named 'index'.  Make it show all existing restaurants
+  # 3) Sort the restaurants alphabetically by name
 
 end
