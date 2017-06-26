@@ -55,4 +55,15 @@ Rails.application.routes.draw do
   # 1) Create the file views/restaurants/index.html.erb
   # 2) Create a table that shows the id, name, and address of all restaurants
 
+
+
+  # Extra Credit:
+  # If you get this far:
+  #
+  # Read about REST and Rails: http://www.restapitutorial.com/lessons/httpmethods.html
+  # take a look at https://github.com/toppy42/integratedexamples
+  #
+  # Create a full restful API for restaurants with all methods and pages
+
+
 end
