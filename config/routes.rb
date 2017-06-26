@@ -51,4 +51,8 @@ Rails.application.routes.draw do
   # 2) Add an action named 'index'.  Make it show all existing restaurants
   # 3) Sort the restaurants alphabetically by name
 
+  # Add a view:
+  # 1) Create the file views/restaurants/index.html.erb
+  # 2) Create a table that shows the id, name, and address of all restaurants
+
 end
