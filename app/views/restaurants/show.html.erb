@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<%= @restaurants.name %> :
+<%= @restaurants.address %>
+
+<% if current_admin && @restaurants.admin_id == current_admin.id %>
+    | <%= link_to 'Edit', edit_restaurant_path(@restaurants) %> |
+    <%= link_to 'Destroy', @restaurants, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+
+<br /><br />
+
+
+<% if current_admin && @restaurants.admin_id == current_admin.id %>
+    <li>
+        <%= link_to 'Reservations', restaurant_reservations_path(@restaurants) %>
+    </li>
+<% end %>
+
+<% if current_user %>
+    <li>
+    <%= link_to 'Make Reservation', new_restaurant_reservation_path(@restaurants) %>
+    </li>
+<% else %>
+    <%= 'Log in to make a reservation' %>
+<% end %>
+
+<br />
+<br />
+<li>
+  <%= link_to 'Back', restaurants_path %>
+</li>

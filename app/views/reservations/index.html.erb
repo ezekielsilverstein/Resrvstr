@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Reservations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reservations.each do |reservation| %>
+      <tr>
+        <th>Name</th>
+        <th>Guests</th>
+        <th>Date</th>
+        <th>Time</th>
+      </tr>
+      <tr>
+        <% if current_user %>
+          <% if current_user.id == reservation.user_id %>
+            <td><%= reservation.name %></td>
+            <td><%= reservation.guest_count %></td>
+            <td><%= reservation.time.strftime('%x') %></td>
+            <td><%= reservation.time.strftime('%r') %></td>
+            <td><%= link_to 'Show', restaurant_reservation_path(reservation.restaurant, reservation) %></td>
+            <td><%= link_to 'Edit', edit_restaurant_reservation_path(reservation.restaurant, reservation) %></td>
+            <td><%= link_to 'Destroy', [reservation.restaurant, reservation], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        <% elsif current_admin %>
+          <% if current_admin.id == reservation.restaurant.admin_id %>
+            <td><%= reservation.name %></td>
+            <td><%= reservation.guest_count %></td>
+            <td><%= reservation.time.strftime('%x') %></td>
+            <td><%= reservation.time.strftime('%r') %></td>
+            <td><%= link_to 'Show', restaurant_reservation_path(reservation.restaurant, reservation) %></td>
+            <td><%= link_to 'Edit', edit_restaurant_reservation_path(reservation.restaurant, reservation) %></td>
+            <td><%= link_to 'Destroy', [reservation.restaurant, reservation], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<% if current_user %>
+  <%= link_to 'New Reservation', new_restaurant_reservation_path%>
+<% else %>
+  <%= 'Please log in as a user to make a new reservation' %>
+<% end %>

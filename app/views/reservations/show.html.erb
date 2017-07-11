@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <tr>
+    <th>Name</th>
+    <th>Date</th>
+    <th>Time</th>
+    <th># of Guests</th>
+  </tr>
+  <tr>
+    <td><%= @reservation.name %></td>
+    <td><%= @reservation.time.strftime('%x') %></td>
+    <td><%= @reservation.time.strftime('%r') %></td>
+    <td><%= @reservation.guest_count %>
+    <td><%#= link_to 'Destroy', [@restaurant, @reservation], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+  </tbody>
+</table>
+
+
+<%= link_to 'Edit', edit_restaurant_reservation_path( @restaurant, @reservation ) %> |
+<%= link_to 'Back', restaurant_reservations_path %>

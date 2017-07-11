@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  devise_for :users
+  devise_for :admins
+  resources :restaurants do
+    resources :reservations
+  end
+
+  root 'restaurants#index'
+
   # MODEL EXAMPLES
 
   # Model with no database connection
@@ -9,11 +17,11 @@ Rails.application.routes.draw do
   # - models/plain_object_example.rb
   #
   # Get a PlainObjectExample
-  get 'model_examples/example1', to: 'model_examples#example1'
+  # get 'model_examples/example1', to: 'model_examples#example1'
 
   # EXERCISE: Use a query param to set the name
   #
-  get 'model_examples/example2', to: 'model_examples#example2'
+  # get 'model_examples/example2', to: 'model_examples#example2'
 
 
   # Model with database connection
@@ -25,10 +33,10 @@ Rails.application.routes.draw do
   # - db/schema.rb
   #
   # Example 3: Creates a new record if "given_name" param is present
-  get 'model_examples/example3', to: 'model_examples#example3'
+  # get 'model_examples/example3', to: 'model_examples#example3'
 
   # Example 4: Show all names saved
-  get 'model_examples/example4', to: 'model_examples#example4'
+  # get 'model_examples/example4', to: 'model_examples#example4'
 
 
   # EXERCISE:
